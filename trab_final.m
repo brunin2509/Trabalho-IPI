@@ -29,3 +29,5 @@ imshow(Ifilt); title('Bordas filtradas');
 
 pause();
 close all;
+
+%comentario
