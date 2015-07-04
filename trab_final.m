@@ -2,6 +2,7 @@ close all;
 clear all;
 clc;
 
+b=2;
 I = imread('jailson.jpg');
 
 figure; imshow(I); title('Imagem original');
