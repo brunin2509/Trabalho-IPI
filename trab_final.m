@@ -2,8 +2,8 @@ close all;
 clear all;
 clc;
 
-I = imread('jailson.jpg');
-%I = imread('maxresdefault.jpg');
+%I = imread('jailson.jpg');
+I = imread('maxresdefault.jpg');
 
 figure; imshow(I); title('Imagem original');
 
@@ -48,7 +48,7 @@ figure;imshow(Imf);title('Filtro de mediana na imagem colorida');
 
 Iquant = uint8((floor(double(Imf)/16))*16);
 
-figure;imshow(Iquant);title('Imagem quantizada com 8 níveis');
+figure;imshow(Iquant);title('Imagem quantizada com 16 níveis');
 
 pause();
 close all;
