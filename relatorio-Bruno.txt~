@@ -13,6 +13,6 @@ Parte B - Tratamento das cores
 	Além do motivo listado acima, o filtro de mediana também contribuiu um pouco com a estética cartoonizada da imagem.
 
 	3) Processo de Quantização
-	Por fim da parte de tratamento das cores, é realizada a quantização dos níveis de cor em cada canal da imagem. 
+	Por fim da parte de tratamento das cores, é realizada a quantização dos níveis de cor em cada canal da imagem, arredondando os valores para baixo, usando a função floor() do matlab. 
 	Quanto menor a quantidade de níveis de cor, menos real a imagem ficava, favorecendo assim o fator cartoon, porém a qualidade visual piorava consideravelmente, ao passo que, quanto maior a quantidade de níveis, a imagem ficava visualmente melhor, porém era perdido o fator cartoon, o que não poderia acontecer de for alguma.
 	Com isso, ao testar diversas quantizações, percebemos que a quantização com fator 16 (em cada canal) balanceava bem dois os quesitos qualidade visual e aparência cartoon da imagem.	
