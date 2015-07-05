@@ -31,12 +31,12 @@ imshow(Ifilt); title('Bordas filtradas');
 
 Ifiltrado = colorBilateralFil(I, 9, 3, 3);
 
-figure; ishow(Ifiltrado); title('Aplicação do filtro bilateral');
+figure; imshow(Ifiltrado, []); title('Aplicação do filtro bilateral');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Ifil_bilateral = colorBilateralFil...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Imf = medfilt2(Ifil_bilateral, [7 7]);
+%%Imf = medfilt2(Ifil_bilateral, [7 7]);
 
 
 
