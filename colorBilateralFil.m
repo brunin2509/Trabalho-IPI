@@ -2,6 +2,7 @@ function[res] = colorBilateralFil(I, w, s_d, s_c)
 
 %Primeiramente, é feito um decaimento, para compensar a complexidade da
 %função em si.
+s_original = size(I);
 I4 = imresize(I, 0.25);
 s = size(I4);
 fil = zeros(w,w);
@@ -45,6 +46,6 @@ for i = 1:s(1)
     end
 end
 
-res = imresize(uint8(res), 4);
+res = imresize(uint8(res), [s_original(1) s_original(2)]);
 
 end
