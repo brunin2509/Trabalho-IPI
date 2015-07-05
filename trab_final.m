@@ -29,6 +29,9 @@ Ifilt = bwareaopen(Idilatado, 300);
 figure;
 imshow(Ifilt); title('Bordas filtradas');
 
+Ifiltrado = colorBilateralFil(I, 9, 3, 3);
+
+figure; ishow(Ifiltrado); title('Aplicação do filtro bilateral');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Ifil_bilateral = colorBilateralFil...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

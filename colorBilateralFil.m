@@ -1,11 +1,8 @@
-function[im] = colorBilateralFil(I, w, s_d, s_c)
+function[res] = colorBilateralFil(I, w, s_d, s_c)
 
-I4 = imresize(I, 0.25);
+I4 = I;
 s = size(I4);
 fil = zeros(w,w);
-
-w = 9
-s_d = 3;
 
 for i = 1:w
     for j = 1:w
@@ -19,16 +16,21 @@ B = zeros(sIm);
    
 for i = 1:s(1)
     for j = 1:s(2)
-        iInf = max(i-w, 1);
-        iSup = min(i+w, s(1));
-        jInf = max(j-w, 1);
-        jSup = min(j+w, s(2));
-        for k = iInf:iSup,
-            for m = jInf:jSup,
-               
-            end
-        end
+        iInf = max(i-w2, 1);
+        iSup = min(i+w2, s(1));
+        jInf = max(j-w2, 1);
+        jSup = min(j+w2, s(2));
+      
+        dR = I4(iInf:iSup, jInf:jSup, 1) - I4(i, j, 1);
+        dG = I4(iInf:iSup, jInf:jSup, 2) - I4(i, j, 2);
+        dB = I4(iInf:iSup, jInf:jSup, 3) - I4(i, j, 3);
         
+        H = exp(-(dR.^2 + dG.^2 + dB.^2)/(2*s_c^2));
+        F = H.*fil((iInf:iSup)+w2-i+1, (jInf:jSup)-j+w2+1);
+        norm = sum(sum(F)));
         
+        res(i, j, 1) = sum(sum(F.*I4(iInf:iSup, jInf:jSup, 1)))/norm;
+        res(i, j, 2) = sum(sum(F.*I4(iInf:iSup, jInf:jSup, 2)))/norm;
+        res(i, j, 3) = sum(sum(F.*I4(iInf:iSup, jInf:jSup, 3)))/norm;
     end
 end
