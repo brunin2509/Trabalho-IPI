@@ -2,7 +2,7 @@ close all;
 clear all;
 clc;
 
-I = imread('seelouco.png');
+I = imread('Imagens/helic.jpg');
 %I = imread('maxresdefault.jpg');
 
 figure; imshow(I); title('Imagem original');
