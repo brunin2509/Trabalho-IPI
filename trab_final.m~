@@ -46,9 +46,9 @@ Imf(:,:,3) = medfilt2(Ifil_bilateral(:,:,3), [7 7]);
 
 figure;imshow(Imf);title('Filtro de mediana na imagem colorida');
 
-Iquant = uint8((floor(double(Imf)/16))*16);
+Iquant = uint8((floor(double(Imf)/32))*32);
 
-figure;imshow(Iquant);title('Imagem quantizada com 8 níveis');
+figure;imshow(Iquant);title('Filtro de mediana na imagem colorida');
 
 pause();
 close all;
