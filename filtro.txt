@@ -1,7 +1,7 @@
-fil = zeros(7,7);
+fil = zeros(w,w);
 
-for i = 1:7
-    for j = 1:7
-        fil(i, j) = exp(-((4-i)^2 + (4-j)^2)/(2*3^2));
+for i = 1:w
+    for j = 1:w
+        fil(i, j) = exp(-((round(w/2)-i)^2 + (round(w/2)-j)^2)/(2*3^2));
     end
 end
