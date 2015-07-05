@@ -8,7 +8,7 @@ Parte A.
 
 3) Nesta etapa, utilizaremos uma operação morfológica com o intuito de deixar as bordas mais espessas, utilizando a função imdilate do MatLab. A operação utilizada foi a dilatação, utilizando um elemento estruturante do tipo disco de raio 2, obtido a partir da função strel. Depois desse passo, teremos uma imagem com as bordas mais grossas e mais parecidas com as bordas de um cartoon. Sendo assim, podemos perceber que se existissem linhas duplas após o passo anterior, as bordas ficariam demasiadamente espessas e bordas próximas se juntariam.
 
-4) Ao final da parte A, utilizaremos a função bwareaopen para diminuir a quantidade de bordas detectadas e assim, diminuir a quantidade de áreas que ficaram sobrecarregadas com bordas, dimuindo a qualidade da nossa saída em estilo cartoon. Com essa função, conseguimos retirar qualquer borda cuja área ultrapassasse 200 pixels.
+4) Ao final da parte A, utilizaremos a função bwareaopen para diminuir a quantidade de bordas detectadas e assim, diminuir a quantidade de áreas que ficaram sobrecarregadas com bordas, dimuindo a qualidade da nossa saída em estilo cartoon. Com essa função, conseguimos retirar qualquer borda cuja área menores que 200 pixels.
 
 Parte C.
 
