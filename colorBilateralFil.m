@@ -11,8 +11,6 @@ for i = 1:w
 end
 
 w2 = floor(w/2);
-
-B = zeros(sIm);
    
 for i = 1:s(1)
     for j = 1:s(2)
@@ -25,12 +23,12 @@ for i = 1:s(1)
         dG = I4(iInf:iSup, jInf:jSup, 2) - I4(i, j, 2);
         dB = I4(iInf:iSup, jInf:jSup, 3) - I4(i, j, 3);
         
-        H = exp(-(dR.^2 + dG.^2 + dB.^2)/(2*s_c^2));
+        H = exp(-double(dR.^2 + dG.^2 + dB.^2)/(2*s_c^2));
         F = H.*fil((iInf:iSup)+w2-i+1, (jInf:jSup)-j+w2+1);
-        norm = sum(sum(F)));
+        norm = sum(sum(F));
         
-        res(i, j, 1) = sum(sum(F.*I4(iInf:iSup, jInf:jSup, 1)))/norm;
-        res(i, j, 2) = sum(sum(F.*I4(iInf:iSup, jInf:jSup, 2)))/norm;
-        res(i, j, 3) = sum(sum(F.*I4(iInf:iSup, jInf:jSup, 3)))/norm;
+        res(i, j, 1) = sum(sum(F.*double(I4(iInf:iSup, jInf:jSup, 1))))/norm;
+        res(i, j, 2) = sum(sum(F.*double(I4(iInf:iSup, jInf:jSup, 2))))/norm;
+        res(i, j, 3) = sum(sum(F.*double(I4(iInf:iSup, jInf:jSup, 3))))/norm;
     end
 end
