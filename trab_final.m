@@ -33,17 +33,12 @@ imshow(Ifilt); title('Bordas filtradas');
 Ifil_bilateral = uint8(colorBilateralFil(I, 9, 3, 5));
 
 figure; imshow(Ifil_bilateral); title('Aplicação do filtro bilateral');
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Ifil_bilateral = colorBilateralFil...
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Imf(:,:,1) = medfilt2(Ifil_bilateral(:,:,1), [7 7]);
-
 Imf(:,:,2) = medfilt2(Ifil_bilateral(:,:,2), [7 7]);
-
 Imf(:,:,3) = medfilt2(Ifil_bilateral(:,:,3), [7 7]);
 
-figure;imshow(Imf);title('Filtro de media na imagem colorida');
+figure;imshow(Imf);title('Filtro de mediana na imagem colorida');
 
 pause();
 close all;
