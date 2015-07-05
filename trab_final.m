@@ -2,7 +2,7 @@ close all;
 clear all;
 clc;
 
-I = imread('jailson.jpg');
+I = imread('mia1.jpg');
 %I = imread('maxresdefault.jpg');
 
 figure; imshow(I); title('Imagem original');
@@ -28,7 +28,7 @@ Idilatado = imdilate(Ibordas, b);
 figure;
 imshow(Idilatado); title('Bordas dilatadas');
 
-Ifilt = bwareaopen(Idilatado, 300);
+Ifilt = bwareaopen(Idilatado, 200);
 figure;
 imshow(Ifilt); title('Bordas filtradas');
 
