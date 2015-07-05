@@ -1,6 +1,6 @@
 function[res] = colorBilateralFil(I, w, s_d, s_c)
 
-I4 = I;
+I4 = imresize(I, 0.25);
 s = size(I4);
 fil = zeros(w,w);
 
@@ -25,10 +25,12 @@ for i = 1:s(1)
         
         H = exp(-double(dR.^2 + dG.^2 + dB.^2)/(2*s_c^2));
         F = H.*fil((iInf:iSup)+w2-i+1, (jInf:jSup)-j+w2+1);
-        norm = sum(sum(F));
+        norm = (sum(F(:)));
         
         res(i, j, 1) = sum(sum(F.*double(I4(iInf:iSup, jInf:jSup, 1))))/norm;
         res(i, j, 2) = sum(sum(F.*double(I4(iInf:iSup, jInf:jSup, 2))))/norm;
         res(i, j, 3) = sum(sum(F.*double(I4(iInf:iSup, jInf:jSup, 3))))/norm;
     end
 end
+
+res = imresize(res, 4);
