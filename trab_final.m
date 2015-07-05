@@ -34,14 +34,20 @@ Ifilt = bwareaopen(Idilatado, 200);
 % Parte B
 %%%%%%%%%
 
+% O filtro bilateral tem a função de homogeneizar as cores da imagem, com a
+% propriedade importante de não prejudicar as bordas.
 Ifil_bilateral = uint8(colorBilateralFil(I, 9, 3, 5));
 
+% Como a função acima decai e interpola a imagem, o filtro de mediana é
+% usado novamente para suavizar anormalidades causas por esses processos.
 Imf2(:,:,1) = medfilt2(Ifil_bilateral(:,:,1), [7 7]);
 Imf2(:,:,2) = medfilt2(Ifil_bilateral(:,:,2), [7 7]);
 Imf2(:,:,3) = medfilt2(Ifil_bilateral(:,:,3), [7 7]);
 
+% Processo de quantização, sendo 16 niveis de cor para cada canal.
 Iquant = uint8((floor(double(Imf2)/16))*16);
 
+% Por fim, as bordas são inseridas na imagem quantizada.
 Iresultante(:,:,1) = Iquant(:,:,1) .* uint8(~Ifilt);
 Iresultante(:,:,2) = Iquant(:,:,2) .* uint8(~Ifilt);
 Iresultante(:,:,3) = Iquant(:,:,3) .* uint8(~Ifilt);
