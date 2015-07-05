@@ -4,8 +4,8 @@ clc;
 
 %comentario
 
-%I = imread('jailson.jpg');
-I = imread('maxresdefault.jpg');
+I = imread('jailson.jpg');
+%I = imread('maxresdefault.jpg');
 
 figure; imshow(I); title('Imagem original');
 
@@ -30,14 +30,20 @@ Ifilt = bwareaopen(Idilatado, 300);
 figure;
 imshow(Ifilt); title('Bordas filtradas');
 
-Ifiltrado = uint8(colorBilateralFil(I, 9, 4, 5));
+Ifil_bilateral = uint8(colorBilateralFil(I, 9, 3, 5));
 
-figure; imshow(Ifiltrado); title('Aplicação do filtro bilateral');
+figure; imshow(Ifil_bilateral); title('Aplicação do filtro bilateral');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Ifil_bilateral = colorBilateralFil...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%Imf = medfilt2(Ifil_bilateral, [7 7]);
+Imf(:,:,1) = medfilt2(Ifil_bilateral(:,:,1), [7 7]);
+
+Imf(:,:,2) = medfilt2(Ifil_bilateral(:,:,2), [7 7]);
+
+Imf(:,:,3) = medfilt2(Ifil_bilateral(:,:,3), [7 7]);
+
+figure;imshow(Imf);title('Filtro de media na imagem colorida');
 
 pause();
 close all;

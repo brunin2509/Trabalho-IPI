@@ -33,4 +33,4 @@ for i = 1:s(1)
     end
 end
 
-res = imresize(res, 4);
+res = imresize(uint8(res), 4);
