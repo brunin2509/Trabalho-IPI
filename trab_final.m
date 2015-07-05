@@ -29,5 +29,13 @@ Ifilt = bwareaopen(Idilatado, 300);
 figure;
 imshow(Ifilt); title('Bordas filtradas');
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ifil_bilateral = colorBilateralFil...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Imf = medfilt2(Ifil_bilateral, [7 7]);
+
+
+
 pause();
 close all;
