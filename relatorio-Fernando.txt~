@@ -1,0 +1,17 @@
+Com o objetivo de obter o efeito desejado, o algoritmo foi dividido em três partes. Na parte A, utilizaremos algoritmos para obter as bordas da imagem original, transformada para níveis de cinza. Dessa forma, obteremos os traços característicos de um cartoon. Na parte B, utilizaremos algoritmos para tornar as cores mais uniformes, de modo a deixar as cores da imagem semelhantes a pintura de uma desenho. Na parte C, apenas reuniremos os resultados das partes A e B para obter o nosso efeito de cartoon.
+
+Parte A.
+
+1) Primeiramente, foi utilizado um filtro de mediana para deixar a imagem mais uniforme e retirar ruídos do tipo salt-and-pepper. Esse processamento tem uma função importante visto que auxilia em uma melhoria considerável na detecção das bordas da imagem, pois utilizaremos métodos de segmentação por transição que são sensíveis ao ruído. O filtro utilizado foi de tamanho 7x7, de modo que ele é grande o suficiente para suavizar os níveis de cinza, e não tão grande a ponto de descaracterizar as bordas. Para a aplicação desse filtro, foi usada a função medfilt2 do MatLab.
+
+2) Reduzidos os ruídos, foi aplicado um detector de bordas de Canny. Esse método tem a importante característica de não produzir bordas duplas (como um filtro Laplaciano), que será importante para um resultado efetivo no próximo passo. O limiar máximo de 0.15 e o limiar mínimo calculado pelo função edge do MatLab.
+
+3) Nesta etapa, utilizaremos uma operação morfológica com o intuito de deixar as bordas mais espessas, utilizando a função imdilate do MatLab. A operação utilizada foi a dilatação, utilizando um elemento estruturante do tipo disco de tamanho 2x2, obtido a partir da função strel. Depois desse passo, teremos uma imagem com as bordas mais grossas e mais parecidas com as bordas de um cartoon. Sendo assim, podemos perceber que se existissem linhas duplas após o passo anterior, as bordas ficariam demasiadamente espessas e bordas próximas se juntariam.
+
+4) Ao final da parte A, utilizaremos a função bwareaopen para diminuir a quantidade de bordas detectadas e assim, diminuir a quantidade de áreas que ficaram sobrecarregadas com bordas, dimuindo a qualidade da nossa saída em estilo cartoon. Com essa função, conseguimos retirar qualquer borda cuja área ultrapassasse 200 pixels.
+
+Parte C.
+
+1- Para completar esta parte, a única operação realizada foi a soma dos resultados das partes A e B. Assim, obtendo a imagem resultante das cores quantizadas sobrepostas sobre as bordas obtidas na parte A.
+
+

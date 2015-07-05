@@ -1,0 +1,18 @@
+Parte B - Tratamento das cores
+
+	1) Filtragem Bilateral
+	O primeiro e principal fator no tratamento das cores, para se obter um efeito de cartoon na imagem, é a aplicação do filtro bilateral.
+	O filtro bilateral tem o objetivo de homogeneizar as cores da imagem, de forma que a mesma se afaste um pouco da realidade e adentre mais às características de uma imagem cartoonizada.
+	Esse filtro, em sua aplicação, se parece com uma convolução usando máscara gaussiana. O seu diferencial está nos pesos de cada pixel na hora da soma; quando um pixel adjacente tiver valor muito diferente do pixel central, ele vai ter um peso menor do que um pixel adjacente que tenha valor próximo ao central. Com isso, podemos nos tranquilizar quanto à preservação das mudanças bruscas de cor, o que não aconteceria se usássemos um filtro gaussiano.
+	Um dos problemas relacionados à execução do filtro bilateral é a sua complexidade computacional. Pelo fato de estarmos rodando no matlab, aplicar tal filtro exigiu relativamente bastante tempo, e, por isso, foi utilizada a função imresize com fator 1/4 para reduzir a imagem e, assim, reduzir também o tempo de execução.
+	No artigo tomado por nós como referência, o filtro foi iterado 14 vezes em uma imagem, porém, no nosso caso, uma iteração nos deu bons resultados, ao passo que duas ou mais iterações não foram tão satisfatórias, talvez pelo fato de estarmos trabalhando com canais RGB, enquanto, em outras implementações que estudamos, foram usados canais como CIElab.
+	Nossa implementação foi baseada em diversas implementações encontradas, e em diferentes referências, que serão listadas no final deste relatório. Os limiares, por sua vez, foram determinados empiricamente, conforme testávamos a função implentada em várias entradas. O tamanho da máscara escolhido, baseado no artido lido, foi 9 x 9.
+
+	2) Filtro de Mediana
+	Assim como na Parte A, usamos esse filtro para poder suavizar certos comportamentos não desejados na imagem. No caso do tratamento das bordas, esse foi usado para amenizar o ruído Salt and Pepper, e, na Parte B, esse filtro tem o objetivo de, ao suavizar novamente a imagem, reduzir os problemas trazidos pela interpolação, usada no final da filtragem bilateral para voltar a imagem ao seu tamanho original.
+	Além do motivo listado acima, o filtro de mediana também contribuiu um pouco com a estética cartoonizada da imagem.
+
+	3) Processo de Quantização
+	Por fim da parte de tratamento das cores, é realizada a quantização dos níveis de cor em cada canal da imagem, arredondando os valores para baixo, usando a função floor() do matlab. 
+	Quanto menor a quantidade de níveis de cor, menos real a imagem ficava, favorecendo assim o fator cartoon, porém a qualidade visual piorava consideravelmente, ao passo que, quanto maior a quantidade de níveis, a imagem ficava visualmente melhor, porém era perdido o fator cartoon, o que não poderia acontecer de for alguma.
+	Com isso, ao testar diversas quantizações, percebemos que a quantização com fator 16 (em cada canal) balanceava bem os dois quesitos, qualidade visual e aparência cartoon da imagem.	

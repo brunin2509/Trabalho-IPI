@@ -47,6 +47,10 @@ Imf2(:,:,3) = medfilt2(Ifil_bilateral(:,:,3), [7 7]);
 % Processo de quantização, sendo 16 niveis de cor para cada canal.
 Iquant = uint8((floor(double(Imf2)/16))*16);
 
+%%%%%%%%%
+% Parte C
+%%%%%%%%%
+
 % Por fim, as bordas são inseridas na imagem quantizada.
 Iresultante(:,:,1) = Iquant(:,:,1) .* uint8(~Ifilt);
 Iresultante(:,:,2) = Iquant(:,:,2) .* uint8(~Ifilt);
@@ -77,6 +81,11 @@ figure;imshow(Imf2);title('Filtro de mediana na imagem colorida');
 pause();
 figure;imshow(Iquant);title('Imagem quantizada com 16 niveis');
 pause();
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Resultado da parte C
+%%%%%%%%%%%%%%%%%%%%%%%
+
 figure;imshow(Iresultante);title('Imagem resultante');
 pause();
 
