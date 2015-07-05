@@ -2,7 +2,7 @@ close all;
 clear all;
 clc;
 
-I = imread('Imagens/helic.jpg');
+I = imread('Imagens/jailson.jpg');
 %I = imread('maxresdefault.jpg');
 
 figure; imshow(I); title('Imagem original');
@@ -37,6 +37,7 @@ imshow(Ifilt); title('Bordas filtradas');
 %%%%%%%%%
 
 Ifil_bilateral = uint8(colorBilateralFil(I, 9, 3, 5));
+Ifil_bilateral = uint8(colorBilateralFil(Ifil_bilateral, 9, 3, 5));
 
 figure; imshow(Ifil_bilateral); title('Aplicacao do filtro bilateral');
 
