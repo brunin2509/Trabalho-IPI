@@ -3,7 +3,8 @@ clear all;
 clc;
 
 I = imread('Imagens/camaro.jpg');
-%I = imread('maxresdefault.jpg');
+nome = 'camaro_final.png';
+% nome que a imagem resultante terá
 
 %%%%%%%%%
 % Parte A
@@ -36,7 +37,7 @@ Ifilt = bwareaopen(Idilatado, 200);
 
 % O filtro bilateral tem a função de homogeneizar as cores da imagem, com a
 % propriedade importante de não prejudicar as bordas.
-Ifil_bilateral = uint8(colorBilateralFil(I, 9, 3, 5));
+Ifil_bilateral = colorBilateralFil(I, 9, 3, 5);
 
 % Como a função acima decai e interpola a imagem, o filtro de mediana é
 % usado novamente para suavizar anormalidades causas por esses processos.
@@ -55,6 +56,7 @@ Iquant = uint8((floor(double(Imf2)/16))*16);
 Iresultante(:,:,1) = Iquant(:,:,1) .* uint8(~Ifilt);
 Iresultante(:,:,2) = Iquant(:,:,2) .* uint8(~Ifilt);
 Iresultante(:,:,3) = Iquant(:,:,3) .* uint8(~Ifilt);
+imwrite(Iresultante, nome);
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % Resultados da parte A
